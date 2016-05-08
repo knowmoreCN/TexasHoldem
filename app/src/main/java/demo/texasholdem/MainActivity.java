@@ -151,9 +151,12 @@ public class MainActivity extends Activity {
             @Override
             public void onDismiss(DialogInterface dialog) {
                 int position = mDialog.getPosition();
-                String text =  CardUtils.getName(position);
-                ((Button)view).setText(text);
-                view.setBackgroundResource(CardUtils.getCardResource(position));
+                //小于0 表示点击不正确
+                if(position >= 0) {
+                    String text = CardUtils.getName(position);
+                    ((Button) view).setText(text);
+                    view.setBackgroundResource(CardUtils.getCardResource(position));
+                }
             }
         });
 

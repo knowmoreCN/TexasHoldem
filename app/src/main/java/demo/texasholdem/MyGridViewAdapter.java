@@ -29,6 +29,14 @@ class MyGridViewAdapter extends BaseAdapter {
         return data[position];
     }
 
+    public void changeDateState(int position, int state) {
+        if(position > data.length) {
+            System.err.print("changeDateState error position out of bounds");
+        }
+        this.data[position] = state > 0 ? 1:0;
+        notifyDataSetChanged();
+    }
+
     public void changeDataState(int[] data) {
         this.data = data;
         notifyDataSetChanged();
@@ -72,6 +80,7 @@ class MyGridViewAdapter extends BaseAdapter {
         if(data[position] == 0) {
             holder.tv.setVisibility(View.VISIBLE);
             holder.img.setVisibility(View.VISIBLE);
+
         } else {
             holder.tv.setVisibility(View.INVISIBLE);
             holder.img.setVisibility(View.INVISIBLE);
