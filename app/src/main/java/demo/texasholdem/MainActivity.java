@@ -4,9 +4,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -142,8 +140,6 @@ public class MainActivity extends Activity {
         resultAdapter.showResult(result);
     }
 
-    private String[] names = {
-            "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
 
     private String[] types = {"h","s","d","c"};
 
@@ -155,8 +151,9 @@ public class MainActivity extends Activity {
             @Override
             public void onDismiss(DialogInterface dialog) {
                 int position = mDialog.getPosition();
-                String text =  names[position % names.length] + types[position / names.length];
+                String text =  CardUtils.getName(position);
                 ((Button)view).setText(text);
+                view.setBackgroundResource(CardUtils.getCardResource(position));
             }
         });
 

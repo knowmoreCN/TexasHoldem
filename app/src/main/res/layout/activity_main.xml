@@ -20,19 +20,19 @@
 
     >
         <Button android:layout_margin="5dp" android:id="@+id/boardcard1" android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="wrap_content" android:textColor="#ffffff"
                 android:layout_weight="1" android:onClick="onCardClick"/>
         <Button android:layout_margin="5dp" android:id="@+id/boardcard2" android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:layout_weight="1"
+                android:layout_height="wrap_content" android:layout_weight="1" android:textColor="#ffffff"
                 android:onClick="onCardClick"/>
         <Button android:layout_margin="5dp" android:id="@+id/boardcard3" android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:layout_weight="1"
+                android:layout_height="wrap_content" android:layout_weight="1" android:textColor="#ffffff"
                 android:onClick="onCardClick"/>
         <Button android:layout_margin="5dp" android:id="@+id/boardcard4" android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:layout_weight="1"
+                android:layout_height="wrap_content" android:layout_weight="1" android:textColor="#ffffff"
                 android:onClick="onCardClick"/>
         <Button android:layout_margin="5dp" android:id="@+id/boardcard5" android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:layout_weight="1"
+                android:layout_height="wrap_content" android:layout_weight="1" android:textColor="#ffffff"
                 android:onClick="onCardClick"/>
 
 
@@ -45,10 +45,10 @@
 
     >
         <Button android:layout_margin="5dp" android:id="@+id/handcard1" android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="wrap_content" android:textColor="#ffffff"
                 android:layout_weight="0.2" android:onClick="onCardClick"/>
         <Button android:layout_margin="5dp" android:id="@+id/handcard2" android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:layout_weight="0.2"
+                android:layout_height="wrap_content" android:layout_weight="0.2" android:textColor="#ffffff"
                 android:onClick="onCardClick"/>
 
 

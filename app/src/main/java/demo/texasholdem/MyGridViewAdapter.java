@@ -16,12 +16,6 @@ class MyGridViewAdapter extends BaseAdapter {
      * 顺序 红黑方梅
      */
     private int[] data = new int[52];
-    private String[] names = {
-            "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A",};
-    private int[] image = {R.drawable.heart,
-            R.drawable.spade,
-            R.drawable.diamond,
-            R.drawable.club};
 
     public MyGridViewAdapter(Context context) {
         this.context = context;
@@ -72,8 +66,8 @@ class MyGridViewAdapter extends BaseAdapter {
         } else {
             holder = (Holder) convertView.getTag();
         }
-        holder.tv.setText(names[position % 13]);
-        holder.img.setImageResource(image[position / 13]);
+        holder.tv.setText(CardUtils.cardNames[position % 13]);
+        holder.img.setImageResource(CardUtils.cardImageRes[position / 13]);
 
         if(data[position] == 0) {
             holder.tv.setVisibility(View.VISIBLE);
