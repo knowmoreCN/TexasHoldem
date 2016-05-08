@@ -18,16 +18,19 @@ import demo.texasholdem.poker.MEquity;
 import demo.texasholdem.poker.Poker;
 import demo.texasholdem.poker.impl.HEPoker;
 
-public class MainActivity extends Activity implements AdapterView.OnItemClickListener {
+public class MainActivity extends Activity {
 
 
     GridViewDialog mDialog;
 
-    GridView boardview;
-    CardListViewAdapter boardAdapter;
+    Button boardcard1;
+    Button boardcard2;
+    Button boardcard3;
+    Button boardcard4;
+    Button boardcard5;
 
-    GridView handview;
-    CardListViewAdapter handAdapter;
+    Button handcard1;
+    Button handcard2;
 
 
     ListView resultview;
@@ -53,51 +56,61 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         resultview.setAdapter(resultAdapter);
 
 
-        /*List<Card> boardCard = new ArrayList<>();
-        boardCard.add(new Card());
-        boardCard.add(new Card());
-        boardCard.add(new Card());
-        boardCard.add(new Card());
-        boardCard.add(new Card());
-        boardview = (GridView) findViewById(R.id.boardList);
-        boardview.setClickable(false);
-        boardAdapter = new CardListViewAdapter(this);
-        boardview.setAdapter(boardAdapter);
-        boardAdapter.changeDataState(boardCard);
+        boardcard1 = (Button) findViewById(R.id.boardcard1);
+        boardcard2 = (Button) findViewById(R.id.boardcard2);
+        boardcard3 = (Button) findViewById(R.id.boardcard3);
+        boardcard4 = (Button) findViewById(R.id.boardcard4);
+        boardcard5 = (Button) findViewById(R.id.boardcard5);
 
-        List<Card> handCard = new ArrayList<>();
-        handCard.add(new Card());
-        handCard.add(new Card());
-        handview = (GridView) findViewById(R.id.handList);
-        handview.setClickable(false);
-        handAdapter = new CardListViewAdapter(this);
-        handview.setAdapter(handAdapter);
-        handAdapter.changeDataState(handCard);*/
+        handcard1 = (Button) findViewById(R.id.handcard1);
+        handcard2 = (Button) findViewById(R.id.handcard2);
+
+
 
     }
 
-    private String[] names = {
-            "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A",};
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String text =  names[position % 13];
+    public String getButtonText(Button button) {
+
+        String text = (String) button.getText();
+
+        if(text != null && text.length() > 0) {
+            return text;
+        }
+
+        return null;
     }
+
 
     public void calculate(View view) {
 
         List<String> result = new ArrayList<>();
 
         List<String> board = new ArrayList<>();
-        board.add("4s");
-        board.add("2s");
-        board.add("7s");
+        String text = getButtonText(boardcard1);
+        if(text != null)
+            board.add(text);
+        text = getButtonText(boardcard2);
+        if(text != null)
+            board.add(text);
+        text = getButtonText(boardcard3);
+        if(text != null)
+            board.add(text);
+        text = getButtonText(boardcard4);
+        if(text != null)
+            board.add(text);
+        text = getButtonText(boardcard5);
+        if(text != null)
+            board.add(text);
+
 
         List<String[]> cards = new ArrayList<>();
-//        collectCards(cards, cardPanels);
-        cards.add(new String[]{"Th","Jh"});
-        cards.add(new String[]{"6d","8s"});
 
-        if (cards.size() == 0) {
+        String hand1 = getButtonText(handcard1);
+        String hand2 = getButtonText(handcard2);
+        if(hand1 != null && hand2 != null) {
+
+            cards.add(new String[]{hand1,hand2});
+        } else {
             System.out.println("no hands");
             return;
         }
@@ -129,15 +142,20 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         resultAdapter.showResult(result);
     }
 
+    private String[] names = {
+            "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
+
+    private String[] types = {"h","s","d","c"};
+
     public void onCardClick(final View view) {
-        view.setBackgroundResource(R.drawable.heart);
+//        view.setBackgroundResource(R.drawable.heart);
 
         mDialog.show();
         mDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialog) {
                 int position = mDialog.getPosition();
-                String text =  names[position % 13];
+                String text =  names[position % names.length] + types[position / names.length];
                 ((Button)view).setText(text);
             }
         });
